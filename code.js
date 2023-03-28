@@ -10,15 +10,32 @@ let endingPages = [4, 9, 13, 17, 19, 20];
 let currentPage = 0;
 
 // Your Code Here.
+currentPage = prompt(pages[0]);
 
-let theEnd = function() {
+let endingCheck = function(pageNum) {
     for (let i = 0; i <= endingPages.length; i++) {
-        if (currentPage === endingPages[i]) {
-            return true;
-        } else {
-            return false;
-        }
+        return pageNum === endingPages[i];
     }
 }
 
-console.log(theEnd());
+let printStory = function () {
+    let theStory = `<p>${pages[currentPage]}</p>`;
+    return theStory;
+}
+
+while (currentPage !== null) {
+    let pageCheck = endingCheck(currentPage);
+    console.log(pages[currentPage]);
+    if (currentPage !== null && pageCheck !== true) {
+        currentPage = prompt(pages[currentPage]);
+        document.write(printStory());
+    } 
+    else if (currentPage === null && pageCheck !== false) {
+        document.write = "The End";
+    }
+    else {
+        currentPage = null;
+    }
+}
+
+
