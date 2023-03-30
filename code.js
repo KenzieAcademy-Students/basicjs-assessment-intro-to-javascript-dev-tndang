@@ -23,22 +23,19 @@ let printStory = function() { // This function prints the final story.
     let resultString = ``;
     if (currentPage !== 0) {
         resultString += `<p>You turned to page ${currentPage}.</p>`;
-        resultString += `<p>${pages[currentPage]}</p>`;
-    } else {
-        resultString += `<p>${pages[currentPage]}</p>`;
     }
+    resultString += `<p>${pages[currentPage]}</p>`;
     return resultString;
 }
 
 let endType = function() { // This function prints a good end if the player reaches the last ending.
     let resultString = ``;
     if (currentPage == 20) {
-        resultString += (`<h2>The End!</h2>`);
-        resultString += (`<h6>Press "F5" or refresh the page to play again!</h6>`);
+        resultString += (`<h2>The End!</h2>`); 
     } else {
         resultString += (`<h2>Game Over!</h2>`);
-        resultString += (`<h6>Press "F5" or refresh the page to play again!</h6>`);
     }
+    resultString += (`<h6>Press "F5" or refresh the page to play again!</h6>`);
     return resultString;
 }
 
