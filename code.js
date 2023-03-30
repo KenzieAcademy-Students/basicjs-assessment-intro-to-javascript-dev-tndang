@@ -8,21 +8,21 @@
 let endingPages = [4, 9, 13, 17, 19, 20];
 let currentPage = 0;
 
-// Your Code Here.1
+// Your Code Here.
 let endingCheck = function(pageNum) {
-    for (let i = 0; i <= endingPages.length; i++) {
-        return pageNum === endingPages[i];
+    let result;
+    for (let i = 0; i < endingPages.length; i++) {
+        if (pageNum === endingPages[i]) {
+            result = true;
+        }
     }
+    return result;
 }
 
 let printStory = function () {
     let resultString = ``;
     if (currentPage === 0) {
-        resultString = `<p>${pages[currentPage]}</p>`;
-        return resultString;
-    } 
-    else if (endingCheck() === true) {
-            resultString += `<h2>The End</h2>`
+        resultString += `<p>${pages[currentPage]}</p>`;
     } else {
         resultString += `<p>You turned to page ${currentPage}.</p>`;
         resultString += `<p>${pages[currentPage]}</p>`;
@@ -37,16 +37,18 @@ while (currentPage !== null) {
     let finalStory = printStory();
     let endCheck = endingCheck(currentPage);
 
-    if (currentPage !== null && endCheck !== true) {
+    if (endCheck !== true) {
         currentPage = prompt(pages[currentPage]);
         document.write(finalStory);
-    } else if (endCheck === true) {
+    } 
+    else if (endCheck === true) {
+        currentPage = alert(pages[currentPage]);
+        document.write(finalStory);
         currentPage = null;
-        document.write(finalStory);
-    } else {
-        document.write(finalStory);
-        break;
     }
 }
+
+document.write(`<h2>The End!</h2>`);
+document.write(`<h6>Press "F5" or refresh the page to play again!</h6>`);
 
 
