@@ -21,10 +21,10 @@ let endingCheck = function(pageNum) {
 
 let printStory = function () {
     let resultString = ``;
-    if (currentPage === 0) {
+    if (currentPage !== 0) {
+        resultString += `<p>You turned to page ${currentPage}.</p>`;
         resultString += `<p>${pages[currentPage]}</p>`;
     } else {
-        resultString += `<p>You turned to page ${currentPage}.</p>`;
         resultString += `<p>${pages[currentPage]}</p>`;
     }
     return resultString;
@@ -37,18 +37,16 @@ while (currentPage !== null) {
     let finalStory = printStory();
     let endCheck = endingCheck(currentPage);
 
-    if (endCheck !== true) {
-        currentPage = prompt(pages[currentPage]);
-        document.write(finalStory);
-    } 
-    else if (endCheck === true) {
+    if (endCheck === true) {
         currentPage = alert(pages[currentPage]);
         document.write(finalStory);
+        document.write(`<h2>The End!</h2>`);
+        document.write(`<h6>Press "F5" or refresh the page to play again!</h6>`);
         currentPage = null;
+    } else { 
+        currentPage = prompt(pages[currentPage]);
+        document.write(finalStory);
     }
 }
-
-document.write(`<h2>The End!</h2>`);
-document.write(`<h6>Press "F5" or refresh the page to play again!</h6>`);
 
 
