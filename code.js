@@ -11,7 +11,7 @@ let currentPage = 0;
 // Your Code Here.
 let endingCheck = function(pageNum) {
     let result;
-    for (let i = 0; i < endingPages.length; i++) {
+    for (let i = 0; i <= endingPages.length; i++) {
         if (pageNum === endingPages[i]) {
             result = true;
         }
@@ -19,7 +19,7 @@ let endingCheck = function(pageNum) {
     return result;
 }
 
-let printStory = function () {
+let printStory = function() {
     let resultString = ``;
     if (currentPage !== 0) {
         resultString += `<p>You turned to page ${currentPage}.</p>`;
@@ -30,21 +30,36 @@ let printStory = function () {
     return resultString;
 }
 
+let endType = function() {
+    let resultString = ``;
+    if (currentPage == 20) {
+        resultString += (`<h2>The End!</h2>`);
+        resultString += (`<h6>Press "F5" or refresh the page to play again!</h6>`);
+    } else {
+        resultString += (`<h2>Game Over!</h2>`);
+        resultString += (`<h6>Press "F5" or refresh the page to play again!</h6>`);
+    }
+    return resultString;
+}
+
 while (currentPage !== null) {
     currentPage = parseInt(currentPage);
     console.log(pages[currentPage]);
 
     let finalStory = printStory();
+    let endingMessage = endType();
     let endCheck = endingCheck(currentPage);
 
     if (endCheck === true) {
         currentPage = alert(pages[currentPage]);
         document.write(finalStory);
-        document.write(`<h2>The End!</h2>`);
-        document.write(`<h6>Press "F5" or refresh the page to play again!</h6>`);
+        document.write(endingMessage);
         currentPage = null;
-    } else { 
+    } else if (currentPage === 0) {
         currentPage = prompt(pages[currentPage]);
+        document.write(finalStory);
+    } else { 
+        currentPage = prompt(pages[currentPage] + `\n\n What page would you like to go to?`);
         document.write(finalStory);
     }
 }
